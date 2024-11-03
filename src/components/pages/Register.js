@@ -49,17 +49,20 @@ export const Register = () => {
     },
   ]
 
-  if (isLoading) return <Loader />
+  if (isLoading)
+    return (
+      <Flex style={{ height: "95vh", justifyContent: "center", alignItems: "center" }}>
+        <Loader />
+      </Flex>
+    )
 
   return (
     <Flex
       vertical
       style={{
-        paddingLeft: spaces.space5,
-        paddingRight: spaces.space5,
         alignItems: "center",
         gap: spaces.space2,
-        width: "95vw",
+        width: "90vw",
         maxWidth: 600,
         justifySelf: "center",
       }}
@@ -72,7 +75,13 @@ export const Register = () => {
         <RegisterFinish />
       ) : (
         <>
-          <Steps size="small" current={currentStep} items={steps.map((step) => ({ title: step.title }))} onChange={setCurrentStep} />
+          <Steps
+            size="small"
+            current={currentStep}
+            items={steps.map((step) => ({ title: step.title }))}
+            onChange={setCurrentStep}
+            style={{ marginBottom: spaces.space2 }}
+          />
           {steps[currentStep].children}
         </>
       )}

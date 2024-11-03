@@ -3,7 +3,7 @@ import spaces from "../../utils/spaces"
 
 export const RegisterInfo = ({ submitText, cancelText, onSubmit, onCancel }) => {
   return (
-    <Flex vertical style={{ maxWidth: 600, gap: spaces.space2 }}>
+    <Flex vertical style={{ maxWidth: 600, gap: spaces.space2, paddingTop: spaces.space2 }}>
       <p>
         O <strong>Raízes</strong> é um espaço educativo que tem por objetivo envolver estudantes do ensino fundamental em uma experiência que promova
         a fruição do conhecimento e a compreensão do mundo em toda a sua complexidade.
