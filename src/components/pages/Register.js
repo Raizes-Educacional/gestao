@@ -1,8 +1,11 @@
 import { Flex, Steps } from "antd"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { RegisterContext } from "../../contexts/RegisterContext"
 import { useRegister } from "../../hooks/useRegister"
 import spaces from "../../utils/spaces"
+import { Loader } from "../atoms/Loader"
 import { Logo } from "../atoms/Logo"
+import { RegisterFinish } from "../organisms/RegisterFinish"
 import { RegisterInfo } from "../organisms/RegisterInfo"
 import { RegisterReponsible } from "../organisms/RegisterResponsible"
 import { RegisterStudent } from "../organisms/RegisterStudent"
@@ -10,15 +13,9 @@ import { RegisterStudent } from "../organisms/RegisterStudent"
 export const Register = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [registerFinished, setRegisterFinished] = useState(false)
-  const { finish } = useRegister()
+  const { currentYear, isLoading, setStudent, setResponsible } = useContext(RegisterContext)
 
-  console.log(registerFinished)
-
-  const currentYear = new Date().getFullYear() + 1
-
-  const finishRegister = () => {
-    finish().then(() => setRegisterFinished(true))
-  }
+  useRegister({ setRegisterFinished })
 
   const steps = [
     {
@@ -29,7 +26,10 @@ export const Register = () => {
       title: "Aluno",
       children: (
         <RegisterStudent
-          onSubmit={() => setCurrentStep(currentStep + 1)}
+          onSubmit={(student) => {
+            setStudent(student)
+            setCurrentStep(currentStep + 1)
+          }}
           onCancel={() => setCurrentStep(currentStep - 1)}
           submitText={"Próximo"}
           cancelText={"Anterior"}
@@ -41,7 +41,7 @@ export const Register = () => {
       children: (
         <RegisterReponsible
           submitText={"Finalizar"}
-          onSubmit={finishRegister}
+          onSubmit={setResponsible}
           cancelText={"Anterior"}
           onCancel={() => setCurrentStep(currentStep - 1)}
         />
@@ -49,14 +49,33 @@ export const Register = () => {
     },
   ]
 
+  if (isLoading) return <Loader />
+
   return (
-    <Flex vertical style={{ paddingLeft: spaces.space5, paddingRight: spaces.space5, alignItems: "center", gap: spaces.space2 }}>
+    <Flex
+      vertical
+      style={{
+        paddingLeft: spaces.space5,
+        paddingRight: spaces.space5,
+        alignItems: "center",
+        gap: spaces.space2,
+        width: "95vw",
+        maxWidth: 600,
+        justifySelf: "center",
+      }}
+    >
       <Flex style={{ alignItems: "center", gap: spaces.space2 }}>
         <Logo width={90} />
         <h1>Formulário de Matrícula - Raízes {currentYear}</h1>
       </Flex>
-      <Steps size="small" current={currentStep} items={steps.map((step) => ({ title: step.title }))} onChange={setCurrentStep} />
-      {steps[currentStep].children}
+      {registerFinished ? (
+        <RegisterFinish />
+      ) : (
+        <>
+          <Steps size="small" current={currentStep} items={steps.map((step) => ({ title: step.title }))} onChange={setCurrentStep} />
+          {steps[currentStep].children}
+        </>
+      )}
     </Flex>
   )
 }

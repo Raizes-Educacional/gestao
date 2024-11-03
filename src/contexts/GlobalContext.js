@@ -1,6 +1,5 @@
 import { createClient } from "@supabase/supabase-js"
 import { createContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 
 export const GlobalContext = createContext({
   supabase: null,
@@ -11,8 +10,6 @@ export const GlobalProvider = ({ children }) => {
   const supabase = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_KEY)
 
   const [session, setSession] = useState(null)
-
-  const navigate = useNavigate()
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -25,11 +22,8 @@ export const GlobalProvider = ({ children }) => {
       setSession(session)
     })
 
-    if (!session) navigate("/login")
-
     return () => subscription.unsubscribe()
-  }, [supabase, navigate, session])
+  }, [supabase, session])
 
   return <GlobalContext.Provider value={{ supabase, session }}>{children}</GlobalContext.Provider>
 }
-
