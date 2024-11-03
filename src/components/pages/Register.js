@@ -13,7 +13,7 @@ import { RegisterStudent } from "../organisms/RegisterStudent"
 export const Register = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [registerFinished, setRegisterFinished] = useState(false)
-  const { currentYear, isLoading, setStudent, setResponsible } = useContext(RegisterContext)
+  const { currentYear, isLoading, student, setStudent, setResponsible } = useContext(RegisterContext)
 
   useRegister({ setRegisterFinished })
 
@@ -33,6 +33,7 @@ export const Register = () => {
           onCancel={() => setCurrentStep(currentStep - 1)}
           submitText={"Próximo"}
           cancelText={"Anterior"}
+          initialValues={student}
         />
       ),
     },
@@ -60,6 +61,7 @@ export const Register = () => {
     <Flex
       vertical
       style={{
+        margin: spaces.space3,
         alignItems: "center",
         gap: spaces.space2,
         width: "90vw",

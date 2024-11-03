@@ -4,11 +4,11 @@ import { useContext } from "react"
 import { RegisterContext } from "../../contexts/RegisterContext"
 import spaces from "../../utils/spaces"
 
-export const RegisterStudent = ({ onSubmit, onCancel, submitText, cancelText }) => {
+export const RegisterStudent = ({ onSubmit, onCancel, submitText, cancelText, initialValues }) => {
   const { registerYear } = useContext(RegisterContext)
 
   return (
-    <Form name="basic" layout="vertical" onFinish={onSubmit}>
+    <Form name="basic" layout="vertical" onFinish={onSubmit} initialValues={initialValues}>
       <Flex vertical gap={spaces.space3}>
         <Flex vertical gap={spaces.space1}>
           <h3 style={{ marginBottom: spaces.space1 }}>Dados pessoais</h3>
