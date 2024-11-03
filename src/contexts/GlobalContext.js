@@ -12,7 +12,7 @@ export const GlobalProvider = ({ children }) => {
 
   const [session, setSession] = useState(null)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -25,10 +25,11 @@ export const GlobalProvider = ({ children }) => {
       setSession(session)
     })
 
-    if (!session) navigate("/login");
+    if (!session) navigate("/login")
 
     return () => subscription.unsubscribe()
-  }, [])
+  }, [supabase, navigate, session])
 
   return <GlobalContext.Provider value={{ supabase, session }}>{children}</GlobalContext.Provider>
 }
+

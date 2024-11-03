@@ -1,4 +1,4 @@
-export default {
+const spaces = {
   space0: "4px",
   space1: "8px",
   space2: "16px",
@@ -10,3 +10,5 @@ export default {
   space8: "64px",
   space9: "72px",
 };
+
+export default spaces;
