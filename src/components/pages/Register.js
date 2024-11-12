@@ -13,7 +13,7 @@ import { RegisterStudent } from "../organisms/RegisterStudent"
 export const Register = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [registerFinished, setRegisterFinished] = useState(false)
-  const { currentYear, isLoading, student, setStudent, setResponsible } = useContext(RegisterContext)
+  const { isLoading, student, setStudent, setResponsible } = useContext(RegisterContext)
 
   useRegister({ setRegisterFinished })
 
@@ -45,6 +45,7 @@ export const Register = () => {
           onSubmit={setResponsible}
           cancelText={"Anterior"}
           onCancel={() => setCurrentStep(currentStep - 1)}
+          studentPhone={student?.phone}
         />
       ),
     },
@@ -61,7 +62,8 @@ export const Register = () => {
     <Flex
       vertical
       style={{
-        margin: spaces.space3,
+        marginTop: spaces.space3,
+        marginBottom: spaces.space3,
         alignItems: "center",
         gap: spaces.space2,
         width: "90vw",
@@ -71,7 +73,7 @@ export const Register = () => {
     >
       <Flex style={{ alignItems: "center", gap: spaces.space2 }}>
         <Logo width={90} />
-        <h1>Formulário de Matrícula - Raízes {currentYear}</h1>
+        <h1>Formulário de Matrícula</h1>
       </Flex>
       {registerFinished ? (
         <RegisterFinish />

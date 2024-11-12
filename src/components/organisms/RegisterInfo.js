@@ -10,7 +10,8 @@ export const RegisterInfo = ({ submitText, cancelText, onSubmit, onCancel }) => 
       </p>
       <strong>Turmas de 9° anos</strong>
       <p>
-        Destinada ao preparo para <strong>processos seletivos</strong> de escolas de referência, como ETECs, SENAI, etc;
+        Destinadas ao preparo para <strong>processos seletivos</strong> de escolas de nível médio-técnico e profissionalizante, tais como ETEC, SENAI,
+        Instituto Federal de São Paulo e Liceu de Artes e Ofícios;
       </p>
       <p>
         As aulas acontecem aos <strong>sábados</strong> das <strong>8:00 horas às 13:00 horas</strong> na{" "}

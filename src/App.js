@@ -5,6 +5,7 @@ import { Login } from "./components/pages/Login"
 import { Register } from "./components/pages/Register"
 import { Student } from "./components/pages/Student"
 import { Teacher } from "./components/pages/Teacher"
+import { PrivateRoute } from "./components/PrivateRoute"
 import { GlobalProvider } from "./contexts/GlobalContext"
 import { RegisterProvider } from "./contexts/RegisterContext"
 
@@ -24,7 +25,7 @@ function App() {
         <Route path="/aluno" element={<Student />} />
         <Route path="/professor" element={<Teacher />} />
         <Route path="/coordenador" element={<Coordinator />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<PrivateRoute><Home /></PrivateRoute>} />
       </Routes>
     </GlobalProvider>
   )
