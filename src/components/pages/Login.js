@@ -1,5 +1,4 @@
-import { Button, Card, Checkbox, Flex, Form, Input } from "antd";
-import { Logo } from "../atoms/Logo";
+import { Button, Checkbox, Flex, Form, Input } from "antd";
 import colors from "../../utils/colors";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { LogoH } from "../atoms/LogoH.";
