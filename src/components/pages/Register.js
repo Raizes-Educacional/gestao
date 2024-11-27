@@ -62,8 +62,7 @@ export const Register = () => {
     <Flex
       vertical
       style={{
-        marginTop: spaces.space3,
-        marginBottom: spaces.space3,
+        margin: `${spaces.space3} auto`, 
         alignItems: "center",
         gap: spaces.space2,
         width: "90vw",
