@@ -26,8 +26,6 @@ export const Login = () => {
     console.log('user: ', user);
     console.log('error: ', error);
 
-
-    
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -63,7 +61,7 @@ export const Login = () => {
             xs={24} 
             md={24}
             lg={12} 
-            style={{ ...flexCentered, backgroundColor: '#e7ecfe', padding: '30px', borderRadius: md ? '0 8px 8px 0' : '10px',  }}
+            style={{ ...flexCentered, backgroundColor: '#e7ecfe', padding: '30px', borderRadius: lg ? '0 8px 8px 0' : '10px',  }}
           >
                 <Form
                   name="basic"
