@@ -44,7 +44,7 @@ export const Login = () => {
         padding: '0 30px' 
       }}
     >
-        <Row style={{ ...loginCardStyle, minWidth: md ? '900px' : '0',}}>
+        <Row style={{ ...loginCardStyle, minWidth: lg ? '900px' : '0',}}>
           <Col 
             xs={24} 
             md={24}
