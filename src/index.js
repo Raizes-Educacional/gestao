@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"
 import App from "./App"
 import "./index.css"
 import colors from "./utils/colors"
-import { HashRouter } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import { ConfigProvider } from "antd"
 
 const theme = {
@@ -13,8 +13,8 @@ const theme = {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ConfigProvider theme={{ token: theme }}>
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </ConfigProvider>
 )
