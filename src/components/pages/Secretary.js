@@ -1,4 +1,4 @@
-export const Home = () => {
+export const Secretary = () => {
   return (
     <div>
       <h1>Home</h1>

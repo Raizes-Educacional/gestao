@@ -1,14 +1,16 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { useSupabase } from "../hooks/useSupabase"
+import {  useNavigate } from "react-router-dom"
+import { useAuthenticationSession } from "../hooks/useAuthenticationSession"
+import { useEffect } from "react";
 
-export const PrivateRoute = ({ children }) => {
-    const supabase = useSupabase()
+export const PrivateRoute = ({children}) => {
     const navigate = useNavigate()
-
+    const session = useAuthenticationSession();
+    
     useEffect(() => {
-        supabase.auth.getSession(({ data: { session } }) => !session && navigate('/login'))
-    })
+        if (!session) {
+            return navigate('login')
+        }
+    }, [session, navigate])
 
     return children
 }
