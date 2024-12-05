@@ -65,7 +65,7 @@ export const Login = () => {
                     <Input
                       placeholder="Usuário"
                       size="large"
-                      style={{ borderColor: loginError ? '#ff4d4f' : '' }}
+                      style={{ borderColor: loginError ? colors.error : '' }}
                       prefix={<UserOutlined style={{color: 'rgba(0,0,0,.25)'}} /> }
                       />
                   </Form.Item>
@@ -86,7 +86,9 @@ export const Login = () => {
                       prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }}/>} 
                     />
                   </Form.Item>
-                    <h4 style={{ fontWeight: '500', color: '#ff4d4f', opacity: loginError ? 1 : 0, marginBottom: '-20px'}}>{loginError || 'eee'}</h4>
+                    <h4 style={{ fontWeight: '500', color: '#ff4d4f', opacity: loginError ? 1 : 0, marginBottom: '-20px'}}>
+                      {loginError || 'eee'}
+                    </h4>
 
 
                   <Form.Item label={null} style={{ marginBottom: !md ? '0' : '' }}>
