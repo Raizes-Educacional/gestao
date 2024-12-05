@@ -6,8 +6,6 @@ import useLogin from "../../hooks/useLogin";
 
 const { useBreakpoint } = Grid;
 
-const loginCardStyle = { backgroundColor: '#FFF', borderRadius: '8px', minHeight: '450px'  }
-const loginFormTitleStyle = { textAlign: 'center', marginBottom: '2rem', fontWeight: 'bold', color: colors.secondary}
 const flexCentered = { display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }
 
 export const Login = () => {
@@ -25,7 +23,7 @@ export const Login = () => {
         padding: !sm ? '0 15px' : '0 30px' 
       }}
     >
-        <Row style={{ ...loginCardStyle, minWidth: lg ? '900px' : '0',}}>
+        <Row style={{ backgroundColor: '#FFF', borderRadius: '8px', minHeight: '450px', minWidth: lg ? '900px' : '0',}}>
           <Col 
             xs={24} 
             md={24}
@@ -54,7 +52,7 @@ export const Login = () => {
                   onFinish={onFinish}
                   autoComplete="off"
                 >
-                  <h2 style={{ ...loginFormTitleStyle, marginTop: !lg ? '-20px' : '-30px' }} >Log In</h2>
+                  <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontWeight: 'bold', color: colors.secondary, marginTop: !lg ? '-20px' : '-30px' }} >Log In</h2>
                   <Form.Item
                     name="username"
                     rules={[{
