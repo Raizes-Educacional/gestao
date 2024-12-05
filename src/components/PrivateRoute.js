@@ -8,7 +8,7 @@ export const PrivateRoute = ({children}) => {
     
     useEffect(() => {
         if (!session) {
-            return navigate('login')
+            return navigate('/login')
         }
     }, [session, navigate])
 
