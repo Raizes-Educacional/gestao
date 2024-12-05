@@ -2,9 +2,7 @@ import { Button, Col, Flex, Form, Grid, Input, Row } from "antd";
 import colors from "../../utils/colors";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { LogoH } from "../atoms/LogoH.";
-import { useSupabase } from "../../hooks/useSupabase";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import useLogin from "../../hooks/useLogin";
 const { useBreakpoint } = Grid;
 
 const loginCardStyle = { backgroundColor: '#FFF', borderRadius: '8px', minHeight: '450px'  }
@@ -12,29 +10,10 @@ const loginFormTitleStyle = { textAlign: 'center', marginBottom: '2rem', fontWei
 const flexCentered = { display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }
 
 export const Login = () => {
-  const supabase = useSupabase()
+  const { loginError, onFinish } = useLogin()
+
   const { sm, md, lg } = useBreakpoint();
-  
-  const [ loginError, setLoginError ] = useState(false)
 
-  const onFinish = async (values) => {
-    const { user, error } = await supabase.auth.signInWithPassword({
-      email: values.username,
-      password: values.password,
-    })
-
-    if(error.__isAuthError) { loginErrorHandle() }
-   
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
-  };
-  
-const loginErrorHandle = () => {
-  setLoginError('Usuário ou senha inválidos')
-  setTimeout(() => setLoginError(false), 3500)
-}
   return (
     <Flex 
       justify="center" 
@@ -72,7 +51,6 @@ const loginErrorHandle = () => {
                   style={{ maxWidth: 600, width: !md ? '100%' : '75%' }}
                   initialValues={{ remember: true }}
                   onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}
                   autoComplete="off"
                 >
                   <h2 style={{ ...loginFormTitleStyle, marginTop: !lg ? '-20px' : '-30px' }} >Log In</h2>
@@ -114,8 +92,6 @@ const loginErrorHandle = () => {
                     <Button type="primary" htmlType="submit" style={{ width: '100%', marginTop: '1.5rem' }}>
                       <span style={{ fontWeight: '600' }}>Entrar</span>
                     </Button>
-                    
-                    <h4 style={{  fontWeight: '500', marginTop: '8px', textAlign: 'center'}}><Link to={'/matricula'} style={{ textDecoration: 'underline' }}>Ainda não tenho uma conta</Link></h4>
                   </Form.Item>
                 </Form>
           </Col>
