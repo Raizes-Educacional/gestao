@@ -1,8 +1,9 @@
-import { Button, Col, Flex, Form, Grid, Input, Row } from "antd";
-import colors from "../../utils/colors";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { LogoH } from "../atoms/LogoH.";
+import { Button, Col, Flex, Form, Grid, Input, Row } from "antd";
+import { LogoHorizontal } from "../atoms/LogoHorizontal";
+import colors from "../../utils/colors";
 import useLogin from "../../hooks/useLogin";
+
 const { useBreakpoint } = Grid;
 
 const loginCardStyle = { backgroundColor: '#FFF', borderRadius: '8px', minHeight: '450px'  }
@@ -31,7 +32,7 @@ export const Login = () => {
             lg={12} 
             style={{ ...flexCentered, padding: !sm ? '15px' : '20px' }}
           >
-                <LogoH width={230}/>
+                <LogoHorizontal width={230}/>
                 
                 <h3 style={{ color: '#8898aa', fontWeight: '500', marginTop: !md ? '1rem' : '2rem' }}>
                   Boas-Vindas ao <span style={{ color: colors.primary, textTransform: 'uppercase', marginLeft: 3 }}>Projeto Raízes</span>
