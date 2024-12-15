@@ -12,7 +12,7 @@ const useLogin = () => {
   const onFinish = async (values) => {
     messageApi.open({
       type: "loading",
-      content: "Loading...",
+      content: "Autenticando Usuário...",
       duration: 0,
     })
 
