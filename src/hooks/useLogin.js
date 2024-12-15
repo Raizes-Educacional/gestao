@@ -31,7 +31,7 @@ const useLogin = () => {
     messageApi.open({
       type: "success",
       content: "Usuário autenticado com succeso!",
-      duration: 0,
+      duration: 1000,
     })
   }
 
