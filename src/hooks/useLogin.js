@@ -23,10 +23,7 @@ const useLogin = () => {
 
     messageApi.destroy()
 
-    if (error?.__isAuthError) {
-      loginErrorHandle()
-      return
-    }
+    if (error?.__isAuthError) return loginErrorHandle()
 
     messageApi.open({
       type: "success",
